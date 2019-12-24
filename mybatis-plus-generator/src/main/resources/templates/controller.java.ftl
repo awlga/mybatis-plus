@@ -35,5 +35,9 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
 </#if>
 
+    @Autowired
+    private I${entity}Service ${entity?uncap_first}Service;
+
+
 }
 </#if>

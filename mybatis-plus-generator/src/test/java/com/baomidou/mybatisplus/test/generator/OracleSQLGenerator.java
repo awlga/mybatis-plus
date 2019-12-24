@@ -17,16 +17,18 @@ package com.baomidou.mybatisplus.test.generator;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
+import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.mysql.cj.jdbc.Driver;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.File;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -42,7 +44,7 @@ public class OracleSQLGenerator extends GeneratorTest {
      */
     public static void main(String[] args) {
         String packagePath = "com.sunny.pm";
-        String[] tableList = {"od_xuqiu","ass_dict"};
+        String[] tableList ={"od_xuqiu"}; //{"od_xuqiu","ass_dict"};
         String moduleName = "business";
         String author = "lgwang";
         String filePath = "D:\\\\codeGen";
@@ -66,6 +68,7 @@ public class OracleSQLGenerator extends GeneratorTest {
                 .setBaseColumnList(true)// XML columList
                 //.setKotlin(true) 是否生成 kotlin 代码
                 .setAuthor(author)
+                .setSwagger2(true)
             // 自定义文件命名，注意 %s 会自动填充表实体属性！
             // .setEntityName("%sEntity");
             // .setMapperName("%sDao")
@@ -147,7 +150,7 @@ public class OracleSQLGenerator extends GeneratorTest {
                 .setModuleName(moduleName)
                 .setParent(packagePath)// 自定义包路径
                 .setController("controller")// 这里是控制器包名，默认 web
-        )/*.setCfg(
+        ).setCfg(
             // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
             new InjectionConfig() {
                 @Override
@@ -157,14 +160,16 @@ public class OracleSQLGenerator extends GeneratorTest {
                     this.setMap(map);
                 }
             }.setFileOutConfigList(Collections.singletonList(new FileOutConfig(
-                "/templates/mapper.xml" + ((1 == result) ? ".ftl" : ".vm")) {
+                "/templates/dto.java.ftl") {
                 // 自定义输出文件目录
                 @Override
                 public String outputFile(TableInfo tableInfo) {
-                    return "../com/xml/" + tableInfo.getEntityName() + ".xml";
+                    return filePath+ File.separator
+                        +packagePath.replaceAll("\\.", StringPool.BACK_SLASH + File.separator)
+                        + File.separator+moduleName+File.separator+"dto"+File.separator+ tableInfo.getEntityName()+"DTO" + StringPool.DOT_JAVA;
                 }
             }))
-        ).setTemplate(
+        )/*.setTemplate(
             // 关闭默认 xml 生成，调整生成 至 根目录
             new TemplateConfig().setXml(null)
             // 自定义模板配置，模板可以参考源码 /mybatis-plus/src/main/resources/template 使用 copy
