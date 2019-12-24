@@ -7,33 +7,33 @@
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
 </#if>
-<#if baseResultMap>
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="${package.Entity}.${entity}">
-<#list table.fields as field>
-<#if field.keyFlag><#--生成主键排在第一位-->
-        <id column="${field.name}" property="${field.propertyName}" />
-</#if>
-</#list>
-<#list table.commonFields as field><#--生成公共字段 -->
-    <result column="${field.name}" property="${field.propertyName}" />
-</#list>
-<#list table.fields as field>
-<#if !field.keyFlag><#--生成普通字段 -->
-        <result column="${field.name}" property="${field.propertyName}" />
-</#if>
-</#list>
-    </resultMap>
 
-</#if>
-<#if baseColumnList>
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-<#list table.commonFields as field>
-        ${field.name},
-</#list>
-        ${table.fieldNames}
+    <sql id="result_column">
+        <#list table.fields as po>
+            <#if po_index!=0>,</#if>${table.name}.${po.name} as ${po.propertyName}
+        </#list>
     </sql>
 
-</#if>
+    <sql id="query_sql_n" >
+        select
+        <include refid="result_column"/>
+        from ${table.name}
+    </sql>
+    <sql id="query_sql">
+        <include refid="query_sql_n" />
+        ${r"${ew.customSqlSegment}"}
+    </sql>
+
+    <select id="selectById" resultType="${package.Entity}.${entity}">
+        <include refid="query_sql_n" />
+        where id=${r"${_parameter}"}
+    </select>
+
+    <select id="selectPage" resultType="${package.Entity}.${entity}">
+        <include refid="query_sql"/>
+    </select>
+
+    <select id="selectList" resultType="${package.Entity}.${entity}">
+        <include refid="query_sql"/>
+    </select>
 </mapper>

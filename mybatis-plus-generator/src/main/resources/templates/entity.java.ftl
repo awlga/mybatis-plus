@@ -5,6 +5,7 @@ import ${pkg};
 </#list>
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
+import java.util.Date;
 import io.swagger.annotations.ApiModelProperty;
 </#if>
 <#if entityLombokModel>
@@ -14,13 +15,15 @@ import lombok.experimental.Accessors;
 </#if>
 
 /**
- * <p>
+<#if table.comment??>
  * ${table.comment!}
- * </p>
- *
+</#if>
  * @author ${author}
  * @since ${date}
  */
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 <#if entityLombokModel>
 @Data
     <#if superEntityClass??>
@@ -90,7 +93,7 @@ public class ${entity} implements Serializable {
     <#if (logicDeleteFieldName!"") == field.name>
     @TableLogic
     </#if>
-    private ${field.propertyType} ${field.propertyName};
+    private <#if field.propertyType == "LocalDateTime">Date<#else>${field.propertyType}</#if> ${field.propertyName};
 </#list>
 <#------------  END 字段循环遍历  ---------->
 
