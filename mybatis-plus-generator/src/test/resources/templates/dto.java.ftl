@@ -1,5 +1,8 @@
 package ${package.Entity};
 
+import ${package.Entity}.${entity};
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 /**
  * @author ${author}

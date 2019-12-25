@@ -43,7 +43,7 @@ public class OracleSQLGenerator extends GeneratorTest {
      * MySQL 生成演示
      */
     public static void main(String[] args) {
-        String packagePath = "com.sunny.pm";
+        String packagePath = "com.sunny.projectman";
         String[] tableList ={"od_xuqiu"}; //{"od_xuqiu","ass_dict"};
         String moduleName = "business";
         String author = "lgwang";

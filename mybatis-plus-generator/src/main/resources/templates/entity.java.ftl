@@ -6,6 +6,7 @@ import ${pkg};
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import java.util.Date;
+import lombok.*;
 import io.swagger.annotations.ApiModelProperty;
 </#if>
 <#if entityLombokModel>
