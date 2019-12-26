@@ -17,6 +17,7 @@ package com.baomidou.mybatisplus.test.generator;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
@@ -60,6 +61,7 @@ public class OracleSQLGenerator extends GeneratorTest {
         AutoGenerator mpg = new AutoGenerator().setGlobalConfig(
             // 全局配置
             new GlobalConfig()
+                .setIdType(IdType.AUTO)
                 .setOutputDir(filePath)//输出目录
                 .setFileOverride(true)// 是否覆盖文件
                 .setActiveRecord(true)// 开启 activeRecord 模式

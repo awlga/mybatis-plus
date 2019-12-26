@@ -10,6 +10,7 @@ import lombok.experimental.Accessors;
  */
 <#if entityLombokModel>
 @Data
+@Builder
 @Accessors(chain = true)
 </#if>
 public class ${entity}DTO {

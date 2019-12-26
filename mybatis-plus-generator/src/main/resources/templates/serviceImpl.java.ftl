@@ -7,9 +7,7 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
  * ${table.comment!} 服务实现类
- * </p>
  *
  * @author ${author}
  * @since ${date}
@@ -21,6 +19,43 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 }
 <#else>
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+    @Override
+    public IPage<${entity}> page(Page<${entity}> page, ${entity} ${entity?uncap_first}) {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        QueryGenerator.installMplus(queryWrapper, ${entity?uncap_first}, null);
+        return baseMapper.selectPage(page, queryWrapper);
+    }
+
+    @Override
+    public boolean save(${entity} entity) {
+        return super.save(entity);
+    }
+
+    @Override
+    public boolean updateById(${entity} entity) {
+        ${entity} ${entity?uncap_first} = super.getById(entity.getId());
+        if (${entity?uncap_first} == null) {
+            throw new RuntimeException("未找到对应实体");
+        }
+        return super.updateById(entity);
+    }
+
+    @Override
+    public boolean removeByIds(String idList) {
+        if (StrUtil.isBlank(idList)) {
+            throw new RuntimeException("参数不识别！");
+        }
+        return super.removeByIds(Arrays.asList(idList.split(",")));
+    }
+
+    @Override
+    public OdXuqiu getById(Serializable id) {
+        ${entity} ${entity?uncap_first} = super.getById(id);
+        if (${entity?uncap_first}==null) {
+            throw new RuntimeException("未找到对应实体");
+        }
+        return ${entity?uncap_first};
+    }
 
 }
 </#if>

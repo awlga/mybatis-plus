@@ -15,6 +15,18 @@ import ${superServiceClassPackage};
 interface ${table.serviceName} : ${superServiceClass}<${entity}>
 <#else>
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+    IPage<${entity}> page(Page<${entity}> page, ${entity} ${entity?uncap_first});
+
+    @Override
+    boolean save(${entity} ${entity?uncap_first}) ;
+
+    @Override
+    boolean updateById(${entity} ${entity?uncap_first});
+
+    boolean removeByIds(String idList);
+
+    @Override
+    ${entity} getById(Serializable id);
 
 }
 </#if>
