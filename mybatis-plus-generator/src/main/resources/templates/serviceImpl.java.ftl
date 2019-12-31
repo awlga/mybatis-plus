@@ -4,7 +4,15 @@ import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
 import ${superServiceImplClassPackage};
+import com.sunny.projectman.common.QueryGenerator;
+
 import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * ${table.comment!} 服务实现类
@@ -49,7 +57,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     }
 
     @Override
-    public OdXuqiu getById(Serializable id) {
+    public ${entity} getById(Serializable id) {
         ${entity} ${entity?uncap_first} = super.getById(id);
         if (${entity?uncap_first}==null) {
             throw new RuntimeException("未找到对应实体");

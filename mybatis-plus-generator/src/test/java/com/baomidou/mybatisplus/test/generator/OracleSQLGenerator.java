@@ -45,7 +45,7 @@ public class OracleSQLGenerator extends GeneratorTest {
      */
     public static void main(String[] args) {
         String packagePath = "com.sunny.projectman";
-        String[] tableList ={"od_xuqiu"}; //{"od_xuqiu","ass_dict"};
+        String[] tableList ={"od_task","od_project","od_xuqiu"}; //{"od_xuqiu","ass_dict"};
         String moduleName = "business";
         String author = "lgwang";
         String filePath = "D:\\\\codeGen";
@@ -119,6 +119,7 @@ public class OracleSQLGenerator extends GeneratorTest {
                 .setNaming(NamingStrategy.underline_to_camel)// 表名生成策略
                 .setColumnNaming(NamingStrategy.no_change)
                 .setInclude(Arrays.stream(tableList).map(j->j.toUpperCase()).toArray(String[]::new)) // 需要生成的表
+                .setRestControllerStyle(true)
 //                 .setExclude(new String[]{"od_xuqiu"}) // 排除生成的表
                 // 自定义实体父类
                 // .setSuperEntityClass("com.baomidou.demo.TestEntity")

@@ -245,6 +245,8 @@ public class ConfigBuilder {
         packageInfo.put(ConstVal.SERVICE, joinPackage(config.getParent(), config.getService()));
         packageInfo.put(ConstVal.SERVICE_IMPL, joinPackage(config.getParent(), config.getServiceImpl()));
         packageInfo.put(ConstVal.CONTROLLER, joinPackage(config.getParent(), config.getController()));
+        packageInfo.put(ConstVal.MODULE, config.getParent());
+        packageInfo.put(ConstVal.DTO, joinPackage(config.getParent(), config.getDto()));
 
         // 自定义路径
         Map<String, String> configPathInfo = config.getPathInfo();

@@ -1,8 +1,13 @@
 package ${package.Controller};
+import ${package.Dto}.${entity}DTO;
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
 
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.*;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;
 <#else>

@@ -67,6 +67,10 @@ public class PackageConfig {
      */
     private String controller = "controller";
     /**
+     * dto包名
+     */
+    private String dto = "dto";
+    /**
      * 路径配置信息
      */
     private Map<String, String> pathInfo;
