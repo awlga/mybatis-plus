@@ -13,6 +13,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import java.io.Serializable;
 import java.util.Arrays;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * ${table.comment!} 服务实现类
@@ -21,6 +22,7 @@ import java.util.Arrays;
  * @since ${date}
  */
 @Service
+@Slf4j
 <#if kotlin>
 open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
 

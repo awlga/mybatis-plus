@@ -5,6 +5,8 @@ import ${package.Service}.${table.serviceName};
 
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -28,6 +30,8 @@ import ${superControllerClassPackage};
 <#else>
 @Controller
 </#if>
+@Slf4j
+@Api(tags = "${table.comment!}")
 @RequestMapping("<#if package.ModuleName??>/${package.ModuleName}</#if>/<#if controllerMappingHyphenStyle??>${controllerMappingHyphen}<#else>${table.entityPath}</#if>")
 <#if kotlin>
 class ${table.controllerName}<#if superControllerClass??> : ${superControllerClass}()</#if>
