@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @Accessors(chain = true)
 </#if>
 public class ${entity}DTO {
-    private ${entity} ${entity?uncap_first};
-    private Integer pageNo;
-    private Integer pageSize;
+    private ${entity} ${entity?uncap_first} = new ${entity}();
+    private Integer pageNo = 1;
+    private Integer pageSize = 10;
 }
