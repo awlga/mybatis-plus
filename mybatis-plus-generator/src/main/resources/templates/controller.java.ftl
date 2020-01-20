@@ -56,7 +56,7 @@ public class ${table.controllerName} {
         Page page = new Page(${entity?uncap_first}DTO.getPageNo(), ${entity?uncap_first}DTO.getPageSize());
         IPage page1 = ${entity?uncap_first}Service.page(page, ${entity?uncap_first}DTO.get${entity}());
         Result<IPage<${entity}>> result = new Result<IPage<${entity}>>();
-        result.setSuccess(true);
+        result.success("");
         result.setResult(page1);
         return result;
     }
