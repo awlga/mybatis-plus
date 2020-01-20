@@ -151,8 +151,8 @@ public class ${table.controllerName} {
     public Result<${entity}> queryById(@RequestParam(name = "id", required = true) String id) {
         Result<${entity}> result = new Result<${entity}>();
         ${entity} ${entity?uncap_first} = ${entity?uncap_first}Service.getById(id);
-        result.setResult(${entity?uncap_first});
-        result.setSuccess(true);
+        result.success("")
+              .setResult(${entity?uncap_first});
         return result;
     }
 
