@@ -61,6 +61,27 @@ public class ${table.controllerName} {
         return result;
     }
 
+
+    /**
+    * 批量保存
+    *
+    * @param ${entity?uncap_first}DTO
+    * @return
+    */
+    @AutoLog(value = "${table.comment!}-批量保存")
+    @ApiOperation(value = "${table.comment!}-批量保存", notes = "${table.comment!}-批量保存")
+    @PostMapping(value = "/saveBatch")
+    public Result<${entity}> saveBatch(@RequestBody ${entity}DTO ${entity?uncap_first}DTO) {
+        Result<${entity}> result = new Result<${entity}>();
+        boolean save = ${entity?uncap_first}Service.saveOrUpdateBatch(${entity?uncap_first}DTO.get${entity}List());
+        if (save) {
+            result.success("批量保存成功！");
+        } else {
+            result.error500("操作失败");
+        }
+        return result;
+    }
+
     /**
     * 添加
     *
