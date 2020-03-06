@@ -84,4 +84,12 @@ public class PackageConfig {
         }
         return parent;
     }
+
+    /**
+     * 根包名
+     */
+    public String getParentRoot() {
+        return parent;
+    }
+
 }

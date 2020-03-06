@@ -22,6 +22,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
+import com.baomidou.mybatisplus.generator.config.builder.ConfigBuilder;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
@@ -44,14 +45,21 @@ public class OracleSQLGenerator extends GeneratorTest {
      * MySQL 生成演示
      */
     public static void main(String[] args) {
-        String packagePath = "com.sunny.projectman";
-        String[] tableList ={"od_task","od_project","od_xuqiu"}; //{"od_xuqiu","ass_dict"};
+        String packagePath = "com.sunny.auth";
+        String[] tableList ={
+            "AUTH_MODULE_URL",
+            "AUTH_RESOURCE",
+            "AUTH_ROLE",
+            "AUTH_ROLE_RESOURCE",
+            "AUTH_USER",
+            "AUTH_USER_ROLE"
+        }; //{"od_xuqiu","ass_dict"};
         String moduleName = "business";
         String author = "lgwang";
         String filePath = "D:\\\\codeGen";
         String db_url = "jdbc:oracle:thin:@192.168.45.92:1521:orcl";
-        String db_user = "demand";
-        String db_password = "demand";
+        String db_user = "xd";
+        String db_password = "xd";
         // 自定义需要填充的字段
 //        List<TableFill> tableFillList = new ArrayList<>();
 //        tableFillList.add(new TableFill("od_xuqiu", FieldFill.INSERT_UPDATE));
@@ -142,7 +150,7 @@ public class OracleSQLGenerator extends GeneratorTest {
             // public User setName(String name) {this.name = name; return this;}
             // .setEntityBuilderModel(true)
             // 【实体】是否为lombok模型（默认 false）<a href="https://projectlombok.org/">document</a>
-             .setEntityLombokModel(true)
+//             .setEntityLombokModel(true)
             // Boolean类型字段是否移除is前缀处理
             // .setEntityBooleanColumnRemoveIsPrefix(true)
             // .setRestControllerStyle(true)

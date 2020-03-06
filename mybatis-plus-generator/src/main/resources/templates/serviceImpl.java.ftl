@@ -4,7 +4,7 @@ import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
 import ${superServiceImplClassPackage};
-import com.sunny.projectman.common.QueryGenerator;
+import ${package.Root}.common.QueryGenerator;
 
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -30,9 +30,8 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 <#else>
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
     @Override
-    public IPage<${entity}> page(Page<${entity}> page, ${entity} ${entity?uncap_first}) {
-        QueryWrapper queryWrapper = new QueryWrapper();
-        QueryGenerator.installMplus(queryWrapper, ${entity?uncap_first}, null);
+    public IPage<${entity}> page(Page<${entity}> page, ${entity} ${entity?uncap_first}, Map<String,String[]> paraMap) {
+        QueryWrapper<${entity}> queryWrapper = QueryGenerator.initQueryWrapper(${entity?uncap_first}, paraMap);
         return baseMapper.selectPage(page, queryWrapper);
     }
 

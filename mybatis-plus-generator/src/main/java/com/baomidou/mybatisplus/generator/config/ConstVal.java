@@ -36,6 +36,7 @@ public interface ConstVal {
     String XML = "Xml";
     String CONTROLLER = "Controller";
     String MODULE = "Module";
+    String PACKAGE_ROOT = "Root";
     String DTO = "Dto";
 
     String ENTITY_PATH = "entity_path";

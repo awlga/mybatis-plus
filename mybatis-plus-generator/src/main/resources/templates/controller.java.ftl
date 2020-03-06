@@ -54,7 +54,7 @@ public class ${table.controllerName} {
     @PostMapping(value = "/list")
     public Result<IPage<${entity}>> queryPageList(@RequestBody ${entity}DTO ${entity?uncap_first}DTO) {
         Page page = new Page(${entity?uncap_first}DTO.getPageNo(), ${entity?uncap_first}DTO.getPageSize());
-        IPage page1 = ${entity?uncap_first}Service.page(page, ${entity?uncap_first}DTO.get${entity}());
+        IPage page1 = ${entity?uncap_first}Service.page(page, ${entity?uncap_first}DTO.get${entity}(),${entity?uncap_first}DTO.getParaMap());
         Result<IPage<${entity}>> result = new Result<IPage<${entity}>>();
         result.success("");
         result.setResult(page1);
